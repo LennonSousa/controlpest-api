@@ -27,7 +27,7 @@ export class createStore1631299304348 implements MigrationInterface {
                 },
                 {
                     name: 'phone',
-                    type: 'varchar(50)',
+                    type: 'varchar',
                 },
                 {
                     name: 'description',

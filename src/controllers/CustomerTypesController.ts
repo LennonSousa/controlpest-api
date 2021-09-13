@@ -67,6 +67,7 @@ export default {
         const {
             name,
             order,
+            active,
         } = request.body;
 
         const customerTypesRepository = getCustomRepository(CustomerTypesRepository);
@@ -74,11 +75,13 @@ export default {
         const data = {
             name,
             order,
+            active,
         };
 
         const schema = Yup.object().shape({
             name: Yup.string().required(),
             order: Yup.number().required(),
+            active: Yup.boolean().notRequired(),
         });
 
         await schema.validate(data, {

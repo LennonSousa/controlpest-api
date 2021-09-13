@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import inventoryActionView from '../views/inventoryActionView';
 import { InventoryActionsRepository } from '../repositories/InventoryActionsRepository';
 import UsersRolesController from './UsersRolesController';
+import { UsersRepository } from '../repositories/UsersRepository';
 
 export default {
     async index(request: Request, response: Response) {
@@ -51,10 +52,13 @@ export default {
             amount,
             inventory_amount,
             product,
-            user,
         } = request.body;
 
         const inventoryActionsRepository = getCustomRepository(InventoryActionsRepository);
+
+        const userRepository = getCustomRepository(UsersRepository);
+
+        const userCreator = await userRepository.findOneOrFail(user_id);
 
         const data = {
             type,
@@ -63,8 +67,8 @@ export default {
             price,
             amount,
             inventory_amount,
+            created_by: userCreator.name,
             product,
-            user,
         };
 
         const schema = Yup.object().shape({
@@ -75,7 +79,6 @@ export default {
             amount: Yup.number().required(),
             inventory_amount: Yup.number().required(),
             product: Yup.string().required(),
-            user: Yup.string().notRequired(),
         });
 
         await schema.validate(data, {
@@ -103,7 +106,6 @@ export default {
             amount,
             inventory_amount,
             product,
-            user,
         } = request.body;
 
         const inventoryActionsRepository = getCustomRepository(InventoryActionsRepository);
@@ -116,7 +118,6 @@ export default {
             amount,
             inventory_amount,
             product,
-            user,
         };
 
         const schema = Yup.object().shape({
@@ -127,7 +128,6 @@ export default {
             amount: Yup.number().required(),
             inventory_amount: Yup.number().required(),
             product: Yup.string().required(),
-            user: Yup.string().notRequired(),
         });
 
         await schema.validate(data, {

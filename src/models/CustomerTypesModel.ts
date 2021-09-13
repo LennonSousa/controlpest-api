@@ -13,6 +13,9 @@ export default class CustomerTypesModel {
     @Column()
     order: number;
 
+    @Column()
+    active: boolean;
+
     @OneToMany(() => Customer, customer => customer.type)
     @JoinColumn({ name: 'type_id' })
     customers: Customer[];

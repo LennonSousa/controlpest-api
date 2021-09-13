@@ -6,6 +6,7 @@ export default {
             id: customerType.id,
             name: customerType.name,
             order: customerType.order,
+            active: customerType.active,
         }
     },
 

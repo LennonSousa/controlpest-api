@@ -55,13 +55,12 @@ export class createInventoryActions1631308175644 implements MigrationInterface {
                         default: 'Now()',
                     },
                     {
-                        name: 'product_id',
+                        name: 'created_by',
                         type: 'varchar',
                     },
                     {
-                        name: 'user_id',
+                        name: 'product_id',
                         type: 'varchar',
-                        isNullable: true,
                     },
                 ],
                 foreignKeys: [

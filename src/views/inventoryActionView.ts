@@ -12,8 +12,8 @@ export default {
             amount: inventoryAction.amount,
             inventory_amount: inventoryAction.inventory_amount,
             created_at: inventoryAction.created_at,
+            created_by: inventoryAction.created_by,
             product: inventoryAction.product && productView.render(inventoryAction.product),
-            user: inventoryAction.user && userView.render(inventoryAction.user),
         }
     },
 

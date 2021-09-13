@@ -19,6 +19,11 @@ export class createCustomerTypes1631299768800 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
+                        name: 'active',
+                        type: 'boolean',
+                        default: true,
+                    },
+                    {
                         name: 'order',
                         type: 'integer',
                     },

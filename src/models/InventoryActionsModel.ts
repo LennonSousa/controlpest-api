@@ -26,11 +26,10 @@ export default class InventoryActionsModel {
     @Column()
     created_at: Date;
 
+    @Column()
+    created_by: string;
+
     @ManyToOne(() => Product, product => product.inventory_actions)
     @JoinColumn({ name: 'product_id' })
     product: Product;
-
-    @ManyToOne(() => User, user => user.estimates)
-    @JoinColumn({ name: 'user_id' })
-    user: User;
 }
