@@ -1,9 +1,6 @@
 import ServiceOrder from '../models/ServiceOrdersModel';
 import customerView from './customerView';
 import userView from './userView';
-import pragueTypeView from './pragueTypeView';
-import treatmentTypeView from './treatmentTypeView';
-import buildTypeView from './buildTypeView';
 
 export default {
     render(serviceOrder: ServiceOrder) {
@@ -11,8 +8,10 @@ export default {
             id: serviceOrder.id,
             other_prague_type: serviceOrder.other_prague_type,
             other_treatment_type: serviceOrder.other_treatment_type,
-            other_build_type: serviceOrder.other_build_type,
             build_description: serviceOrder.build_description,
+            animals: serviceOrder.animals,
+            old_people: serviceOrder.old_people,
+            allergic_people: serviceOrder.allergic_people,
             value: serviceOrder.value,
             payment: serviceOrder.payment,
             warranty: serviceOrder.warranty,
@@ -24,9 +23,6 @@ export default {
             updated_at: serviceOrder.updated_at,
             customer: serviceOrder.customer && customerView.render(serviceOrder.customer),
             user: serviceOrder.user && userView.render(serviceOrder.user),
-            pragueType: serviceOrder.pragueType && pragueTypeView.render(serviceOrder.pragueType),
-            treatmentType: serviceOrder.treatmentType && treatmentTypeView.render(serviceOrder.treatmentType),
-            buildType: serviceOrder.buildType && buildTypeView.render(serviceOrder.buildType),
         }
     },
 

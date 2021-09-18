@@ -1,5 +1,4 @@
 import TreatmentType from '../models/TreatmentTypesModel';
-import serviceOrderView from './serviceOrderView';
 
 export default {
     render(treatmentType: TreatmentType) {
@@ -7,8 +6,6 @@ export default {
             id: treatmentType.id,
             name: treatmentType.name,
             order: treatmentType.order,
-            active: treatmentType.active,
-            serviceOrders: treatmentType.serviceOrders ? serviceOrderView.renderMany(treatmentType.serviceOrders) : [],
         }
     },
 

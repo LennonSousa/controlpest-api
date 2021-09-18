@@ -1,5 +1,4 @@
 import BuildType from '../models/BuildTypesModel';
-import serviceOrderView from './serviceOrderView';
 
 export default {
     render(buildType: BuildType) {
@@ -7,8 +6,6 @@ export default {
             id: buildType.id,
             name: buildType.name,
             order: buildType.order,
-            active: buildType.active,
-            serviceOrders: buildType.serviceOrders ? serviceOrderView.renderMany(buildType.serviceOrders) : [],
         }
     },
 

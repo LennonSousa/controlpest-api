@@ -17,7 +17,7 @@ export default {
             paused: product.paused,
             order: product.order,
             created_at: product.created_at,
-            product: product.category && categoryView.render(product.category),
+            category: product.category && categoryView.render(product.category),
             inventory_actions: product.inventory_actions ? inventoryActionView.renderMany(product.inventory_actions) : [],
         }
     },

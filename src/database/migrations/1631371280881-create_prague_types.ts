@@ -22,11 +22,6 @@ export class createPragueTypes1631371280881 implements MigrationInterface {
                         name: 'order',
                         type: 'integer',
                     },
-                    {
-                        name: 'active',
-                        type: 'boolean',
-                        default: true,
-                    },
                 ]
             })
         );

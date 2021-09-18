@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import ServiceOrder from './ServiceOrdersModel';
+import ServiceTreatmentType from './ServiceTreatmentTypesModel';
 
 @Entity('treatment_types')
 export default class TreatmentTypesModel {
@@ -13,10 +13,7 @@ export default class TreatmentTypesModel {
     @Column()
     order: number;
 
-    @Column()
-    active: boolean;
-
-    @OneToMany(() => ServiceOrder, serviceOrder => serviceOrder.treatmentType)
+    @OneToMany(() => ServiceTreatmentType, serviceTreatmentType => serviceTreatmentType.treatment)
     @JoinColumn({ name: 'treatment_type_id' })
-    serviceOrders: ServiceOrder[];
+    serviceTreatments: ServiceTreatmentType[];
 }

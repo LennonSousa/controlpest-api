@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import ServiceOrder from './ServiceOrdersModel';
+import ServiceBuildType from './ServiceBuildTypesModel';
 
 @Entity('build_types')
 export default class BuildTypesModel {
@@ -13,10 +13,7 @@ export default class BuildTypesModel {
     @Column()
     order: number;
 
-    @Column()
-    active: boolean;
-
-    @OneToMany(() => ServiceOrder, serviceOrder => serviceOrder.buildType)
+    @OneToMany(() => ServiceBuildType, serviceBuildType => serviceBuildType.build)
     @JoinColumn({ name: 'build_type_id' })
-    serviceOrders: ServiceOrder[];
+    serviceBuilds: ServiceBuildType[];
 }

@@ -1,4 +1,5 @@
 import Category from '../models/CategoriesModel';
+import productView from './productView';
 
 export default {
     render(category: Category) {
@@ -8,7 +9,7 @@ export default {
             paused: category.paused,
             order: category.order,
             created_at: category.created_at,
-            products: category.products,
+            products: category.products ? productView.renderMany(category.products) : [],
         }
     },
 

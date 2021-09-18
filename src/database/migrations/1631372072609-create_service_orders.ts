@@ -25,14 +25,24 @@ export class createServiceOrders1631372072609 implements MigrationInterface {
                         isNullable: true,
                     },
                     {
-                        name: 'other_build_type',
-                        type: 'varchar',
-                        isNullable: true,
-                    },
-                    {
                         name: 'build_description',
                         type: 'text',
                         isNullable: true,
+                    },
+                    {
+                        name: 'animals',
+                        type: 'boolean',
+                        default: false,
+                    },
+                    {
+                        name: 'old_people',
+                        type: 'boolean',
+                        default: false,
+                    },
+                    {
+                        name: 'allergic_people',
+                        type: 'boolean',
+                        default: false,
                     },
                     {
                         name: 'value',
@@ -93,18 +103,6 @@ export class createServiceOrders1631372072609 implements MigrationInterface {
                         type: 'varchar',
                         isNullable: true,
                     },
-                    {
-                        name: 'prague_type_id',
-                        type: 'varchar',
-                    },
-                    {
-                        name: 'treatment_type_id',
-                        type: 'varchar',
-                    },
-                    {
-                        name: 'build_type_id',
-                        type: 'varchar',
-                    },
                 ],
                 foreignKeys: [
                     {
@@ -114,30 +112,6 @@ export class createServiceOrders1631372072609 implements MigrationInterface {
                         referencedColumnNames: ['id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE',
-                    },
-                    {
-                        name: 'PragueTypeOnService',
-                        columnNames: ['prague_type_id'],
-                        referencedTableName: 'prague_types',
-                        referencedColumnNames: ['id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'RESTRICT',
-                    },
-                    {
-                        name: 'TreatmentTypeOnService',
-                        columnNames: ['treatment_type_id'],
-                        referencedTableName: 'treatment_types',
-                        referencedColumnNames: ['id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'RESTRICT',
-                    },
-                    {
-                        name: 'ServiceTypeOnService',
-                        columnNames: ['build_type_id'],
-                        referencedTableName: 'build_types',
-                        referencedColumnNames: ['id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'RESTRICT',
                     },
                 ]
             })

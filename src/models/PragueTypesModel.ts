@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import ServiceOrder from './ServiceOrdersModel';
+import ServicePragueType from './ServicePragueTypesModel';
 
 @Entity('prague_types')
 export default class PrageTypesModel {
@@ -13,10 +13,7 @@ export default class PrageTypesModel {
     @Column()
     order: number;
 
-    @Column()
-    active: boolean;
-
-    @OneToMany(() => ServiceOrder, serviceOrder => serviceOrder.pragueType)
+    @OneToMany(() => ServicePragueType, servicePragueType => servicePragueType.prague)
     @JoinColumn({ name: 'prague_type_id' })
-    serviceOrders: ServiceOrder[];
+    servicePragues: ServicePragueType[];
 }

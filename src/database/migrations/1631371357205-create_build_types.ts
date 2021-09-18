@@ -22,11 +22,6 @@ export class createBuildTypes1631371357205 implements MigrationInterface {
                         name: 'order',
                         type: 'integer',
                     },
-                    {
-                        name: 'active',
-                        type: 'boolean',
-                        default: true,
-                    },
                 ]
             })
         );

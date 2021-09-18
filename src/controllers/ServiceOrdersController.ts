@@ -126,6 +126,9 @@ export default {
             other_treatment_type,
             other_build_type,
             build_description,
+            animals,
+            old_people,
+            allergic_people,
             value,
             payment,
             warranty,
@@ -134,9 +137,7 @@ export default {
             finish_at,
             customer,
             user,
-            pragueType,
-            treatmentType,
-            buildType,
+            items,
         } = request.body;
 
         const serviceOrdersRepository = getCustomRepository(ServiceOrdersRepository);
@@ -150,6 +151,9 @@ export default {
             other_treatment_type,
             other_build_type,
             build_description,
+            animals,
+            old_people,
+            allergic_people,
             value,
             payment,
             warranty,
@@ -159,9 +163,7 @@ export default {
             finish_at,
             customer,
             user,
-            pragueType,
-            treatmentType,
-            buildType,
+            items,
         };
 
         const schema = Yup.object().shape({
@@ -169,6 +171,9 @@ export default {
             other_treatment_type: Yup.string().notRequired().nullable(),
             other_build_type: Yup.string().notRequired().nullable(),
             build_description: Yup.string().notRequired().nullable(),
+            animals: Yup.boolean().notRequired(),
+            old_people: Yup.boolean().notRequired(),
+            allergic_people: Yup.boolean().notRequired(),
             value: Yup.number().notRequired(),
             payment: Yup.string().notRequired().nullable(),
             warranty: Yup.string().notRequired().nullable(),
@@ -178,9 +183,14 @@ export default {
             finish_at: Yup.date().required(),
             customer: Yup.string().required(),
             user: Yup.string().required(),
-            pragueType: Yup.string().required(),
-            treatmentType: Yup.string().required(),
-            buildType: Yup.string().required(),
+            items: Yup.array(
+                Yup.object().shape({
+                    name: Yup.string().required(),
+                    details: Yup.number().notRequired(),
+                    amount: Yup.number().required(),
+                    order: Yup.number().required(),
+                })
+            ),
         });
 
         await schema.validate(data, {
@@ -205,6 +215,9 @@ export default {
             other_treatment_type,
             other_build_type,
             build_description,
+            animals,
+            old_people,
+            allergic_people,
             value,
             payment,
             warranty,
@@ -213,9 +226,6 @@ export default {
             finish_at,
             customer,
             user,
-            pragueType,
-            treatmentType,
-            buildType,
         } = request.body;
 
         const serviceOrdersRepository = getCustomRepository(ServiceOrdersRepository);
@@ -229,6 +239,9 @@ export default {
             other_treatment_type,
             other_build_type,
             build_description,
+            animals,
+            old_people,
+            allergic_people,
             value,
             payment,
             warranty,
@@ -239,9 +252,6 @@ export default {
             updated_at: new Date(),
             customer,
             user,
-            pragueType,
-            treatmentType,
-            buildType,
         };
 
         const schema = Yup.object().shape({
@@ -249,6 +259,9 @@ export default {
             other_treatment_type: Yup.string().notRequired().nullable(),
             other_build_type: Yup.string().notRequired().nullable(),
             build_description: Yup.string().notRequired().nullable(),
+            animals: Yup.boolean().notRequired(),
+            old_people: Yup.boolean().notRequired(),
+            allergic_people: Yup.boolean().notRequired(),
             value: Yup.number().notRequired(),
             payment: Yup.string().notRequired().nullable(),
             warranty: Yup.string().notRequired().nullable(),
@@ -257,9 +270,14 @@ export default {
             finish_at: Yup.date().required(),
             customer: Yup.string().required(),
             user: Yup.string().required(),
-            pragueType: Yup.string().required(),
-            treatmentType: Yup.string().required(),
-            buildType: Yup.string().required(),
+            items: Yup.array(
+                Yup.object().shape({
+                    name: Yup.string().required(),
+                    details: Yup.number().notRequired(),
+                    amount: Yup.number().required(),
+                    order: Yup.number().required(),
+                })
+            ),
         });
 
         await schema.validate(data, {

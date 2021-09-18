@@ -20,6 +20,10 @@ import ProductsController from '../controllers/ProductsController';
 import StoreController from '../controllers/StoreController';
 import ServiceOrdersController from '../controllers/ServiceOrdersController';
 import TreatmentTypesController from '../controllers/TreatmentTypesController';
+import ServiceItemsController from '../controllers/ServiceItemsController';
+import ServiceBuildTypesController from '../controllers/ServiceBuildTypesController';
+import ServicePragueTypesController from '../controllers/ServicePragueTypesController';
+import ServiceTreatmentTypesController from '../controllers/ServiceTreatmentTypesController';
 
 const userAuthRoutes = express.Router();
 
@@ -104,6 +108,30 @@ userAuthRoutes.delete('/products/:id', usersAuthMiddleware, ProductsController.d
 
 userAuthRoutes.get('/store', usersAuthMiddleware, StoreController.show);
 userAuthRoutes.put('/store/:id', usersAuthMiddleware, StoreController.update);
+
+userAuthRoutes.get('/services/build-types', usersAuthMiddleware, ServiceBuildTypesController.index);
+userAuthRoutes.get('/services/build-types/:id', usersAuthMiddleware, ServiceBuildTypesController.show);
+userAuthRoutes.post('/services/build-types', usersAuthMiddleware, ServiceBuildTypesController.create);
+userAuthRoutes.put('/services/build-types/:id', usersAuthMiddleware, ServiceBuildTypesController.update);
+userAuthRoutes.delete('/services/build-types/:id', usersAuthMiddleware, ServiceBuildTypesController.delete);
+
+userAuthRoutes.get('/services/prague-types', usersAuthMiddleware, ServicePragueTypesController.index);
+userAuthRoutes.get('/services/prague-types/:id', usersAuthMiddleware, ServicePragueTypesController.show);
+userAuthRoutes.post('/services/prague-types', usersAuthMiddleware, ServicePragueTypesController.create);
+userAuthRoutes.put('/services/prague-types/:id', usersAuthMiddleware, ServicePragueTypesController.update);
+userAuthRoutes.delete('/services/prague-types/:id', usersAuthMiddleware, ServicePragueTypesController.delete);
+
+userAuthRoutes.get('/services/treatment-types', usersAuthMiddleware, ServiceTreatmentTypesController.index);
+userAuthRoutes.get('/services/treatment-types/:id', usersAuthMiddleware, ServiceTreatmentTypesController.show);
+userAuthRoutes.post('/services/treatment-types', usersAuthMiddleware, ServiceTreatmentTypesController.create);
+userAuthRoutes.put('/services/treatment-types/:id', usersAuthMiddleware, ServiceTreatmentTypesController.update);
+userAuthRoutes.delete('/services/treatment-types/:id', usersAuthMiddleware, ServiceTreatmentTypesController.delete);
+
+userAuthRoutes.get('/services/items', usersAuthMiddleware, ServiceItemsController.index);
+userAuthRoutes.get('/services/items/:id', usersAuthMiddleware, ServiceItemsController.show);
+userAuthRoutes.post('/services/items', usersAuthMiddleware, ServiceItemsController.create);
+userAuthRoutes.put('/services/items/:id', usersAuthMiddleware, ServiceItemsController.update);
+userAuthRoutes.delete('/services/items/:id', usersAuthMiddleware, ServiceItemsController.delete);
 
 userAuthRoutes.get('/services', usersAuthMiddleware, ServiceOrdersController.index);
 userAuthRoutes.get('/services/:id', usersAuthMiddleware, ServiceOrdersController.show);

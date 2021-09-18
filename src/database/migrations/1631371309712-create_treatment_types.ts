@@ -22,11 +22,6 @@ export class createTreatmentTypes1631371309712 implements MigrationInterface {
                         name: 'order',
                         type: 'integer',
                     },
-                    {
-                        name: 'active',
-                        type: 'boolean',
-                        default: true,
-                    },
                 ]
             })
         );

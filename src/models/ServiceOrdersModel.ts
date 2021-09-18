@@ -1,10 +1,11 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import Customer from './CustomersModel';
 import User from './UsersModel';
 import PragueType from './PragueTypesModel';
 import TreatmentType from './TreatmentTypesModel';
 import BuildType from './BuildTypesModel';
+import ServiceItem from './ServiceItemsModel';
 
 @Entity('service_orders')
 export default class InventoryActionsModel {
@@ -18,10 +19,16 @@ export default class InventoryActionsModel {
     other_treatment_type: string;
 
     @Column()
-    other_build_type: string;
+    build_description: string;
 
     @Column()
-    build_description: string;
+    animals: boolean;
+
+    @Column()
+    old_people: boolean;
+
+    @Column()
+    allergic_people: boolean;
 
     @Column()
     value: number;
@@ -61,15 +68,9 @@ export default class InventoryActionsModel {
     @JoinColumn({ name: 'user_id' })
     user: User;
 
-    @ManyToOne(() => PragueType, pragueType => pragueType.serviceOrders)
-    @JoinColumn({ name: 'prague_type_id' })
-    pragueType: PragueType;
-
-    @ManyToOne(() => TreatmentType, treatmentType => treatmentType.serviceOrders)
-    @JoinColumn({ name: 'treatment_type_id' })
-    treatmentType: TreatmentType;
-
-    @ManyToOne(() => BuildType, buildType => buildType.serviceOrders)
-    @JoinColumn({ name: 'build_type_id' })
-    buildType: BuildType;
+    @OneToMany(() => ServiceItem, item => item.service, {
+        cascade: ['insert', 'update']
+    })
+    @JoinColumn({ name: 'service_order_id' })
+    items: ServiceItem[];
 }

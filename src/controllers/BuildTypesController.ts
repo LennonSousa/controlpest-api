@@ -36,7 +36,6 @@ export default {
         const {
             name,
             order,
-            active,
         } = request.body;
 
         const buildTypesRepository = getCustomRepository(BuildTypesRepository);
@@ -44,13 +43,11 @@ export default {
         const data = {
             name,
             order,
-            active,
         };
 
         const schema = Yup.object().shape({
             name: Yup.string().required(),
             order: Yup.number().required(),
-            active: Yup.boolean().notRequired(),
         });
 
         await schema.validate(data, {
@@ -70,7 +67,6 @@ export default {
         const {
             name,
             order,
-            active,
         } = request.body;
 
         const buildTypesRepository = getCustomRepository(BuildTypesRepository);
@@ -78,13 +74,11 @@ export default {
         const data = {
             name,
             order,
-            active,
         };
 
         const schema = Yup.object().shape({
             name: Yup.string().required(),
             order: Yup.number().required(),
-            active: Yup.boolean().notRequired(),
         });
 
         await schema.validate(data, {
