@@ -16,6 +16,10 @@ export default {
         const categoriesRepository = getCustomRepository(CategoriesRepository);
 
         const categories = await categoriesRepository.find({
+            relations: [
+                'products',
+                'products.category'
+            ],
             order: {
                 order: "ASC"
             }

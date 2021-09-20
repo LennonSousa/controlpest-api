@@ -4,14 +4,13 @@ import * as Yup from 'yup';
 
 import productView from '../views/productView';
 import { ProductsRepository } from '../repositories/ProductsRepository';
-import { UsersRepository } from '../repositories/UsersRepository';
 import UsersRolesController from './UsersRolesController';
 import ProductsModel from '../models/ProductsModel';
 
 export default {
     async index(request: Request, response: Response) {
         const { user_id } = request.params;
-        const { limit = 10, page = 1, name, user } = request.query;
+        const { limit = 10, page = 1, title, user } = request.query;
 
         if (! await UsersRolesController.can(user_id, "products", "view"))
             return response.status(403).send({ error: 'User permission not granted!' });
@@ -20,14 +19,14 @@ export default {
 
         let products: ProductsModel[] = [];
 
-        if (name) {
+        if (title) {
             products = await productsRepository.find({
-                where: { name: Like(`%${name}%`) },
+                where: { title: Like(`%${title}%`) },
                 relations: [
                     'category',
                 ],
                 order: {
-                    created_at: "DESC"
+                    title: "DESC"
                 },
                 take: Number(limit),
                 skip: ((Number(page) - 1) * Number(limit)),

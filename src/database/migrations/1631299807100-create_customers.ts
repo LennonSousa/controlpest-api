@@ -42,9 +42,25 @@ export class createCustomers1631299807100 implements MigrationInterface {
                     isNullable: true,
                 },
                 {
-                    name: 'address',
+                    name: 'zip_code',
+                    type: 'varchar'
+                },
+                {
+                    name: 'street',
+                    type: 'varchar'
+                },
+                {
+                    name: 'number',
+                    type: 'varchar'
+                },
+                {
+                    name: 'neighborhood',
+                    type: 'varchar'
+                },
+                {
+                    name: 'complement',
                     type: 'varchar',
-                    isNullable: true,
+                    isNullable: true
                 },
                 {
                     name: 'city',

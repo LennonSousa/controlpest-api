@@ -28,7 +28,19 @@ export default class CustomersModel {
     email: string;
 
     @Column()
-    address: string;
+    zip_code: string;
+
+    @Column()
+    street: string;
+
+    @Column()
+    number: string;
+
+    @Column()
+    neighborhood: string;
+
+    @Column()
+    complement: string;
 
     @Column()
     city: string;
