@@ -24,6 +24,7 @@ import ServiceItemsController from '../controllers/ServiceItemsController';
 import ServiceBuildTypesController from '../controllers/ServiceBuildTypesController';
 import ServicePragueTypesController from '../controllers/ServicePragueTypesController';
 import ServiceTreatmentTypesController from '../controllers/ServiceTreatmentTypesController';
+import ServicesController from '../controllers/ServicesController';
 
 const userAuthRoutes = express.Router();
 
@@ -133,11 +134,17 @@ userAuthRoutes.post('/services/items', usersAuthMiddleware, ServiceItemsControll
 userAuthRoutes.put('/services/items/:id', usersAuthMiddleware, ServiceItemsController.update);
 userAuthRoutes.delete('/services/items/:id', usersAuthMiddleware, ServiceItemsController.delete);
 
-userAuthRoutes.get('/services', usersAuthMiddleware, ServiceOrdersController.index);
-userAuthRoutes.get('/services/:id', usersAuthMiddleware, ServiceOrdersController.show);
-userAuthRoutes.post('/services', usersAuthMiddleware, ServiceOrdersController.create);
-userAuthRoutes.put('/services/:id', usersAuthMiddleware, ServiceOrdersController.update);
-userAuthRoutes.delete('/services/:id', usersAuthMiddleware, ServiceOrdersController.delete);
+userAuthRoutes.get('/services/orders', usersAuthMiddleware, ServiceOrdersController.index);
+userAuthRoutes.get('/services/orders/:id', usersAuthMiddleware, ServiceOrdersController.show);
+userAuthRoutes.post('/services/orders', usersAuthMiddleware, ServiceOrdersController.create);
+userAuthRoutes.put('/services/orders/:id', usersAuthMiddleware, ServiceOrdersController.update);
+userAuthRoutes.delete('/services/orders/:id', usersAuthMiddleware, ServiceOrdersController.delete);
+
+userAuthRoutes.get('/services', usersAuthMiddleware, ServicesController.index);
+userAuthRoutes.get('/services/:id', usersAuthMiddleware, ServicesController.show);
+userAuthRoutes.post('/services', usersAuthMiddleware, ServicesController.create);
+userAuthRoutes.put('/services/:id', usersAuthMiddleware, ServicesController.update);
+userAuthRoutes.delete('/services/:id', usersAuthMiddleware, ServicesController.delete);
 
 userAuthRoutes.get('/treatment-types', usersAuthMiddleware, TreatmentTypesController.index);
 userAuthRoutes.get('/treatment-types/:id', usersAuthMiddleware, TreatmentTypesController.show);
