@@ -21,7 +21,7 @@ export class createEstimates1631308681276 implements MigrationInterface {
                     },
                     {
                         name: 'zip_code',
-                        type: 'varchar'
+                        type: 'varchar',
                     },
                     {
                         name: 'street',
