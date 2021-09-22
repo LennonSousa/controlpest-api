@@ -8,7 +8,7 @@ export default class ServiceTreatmentTypesModel {
     @PrimaryGeneratedColumn('uuid')
     readonly id: string;
 
-    @ManyToOne(() => ServiceOrder, service => service.items)
+    @ManyToOne(() => ServiceOrder, service => service.serviceTreatmentTypes)
     @JoinColumn({ name: 'service_order_id' })
     service: ServiceOrder;
 

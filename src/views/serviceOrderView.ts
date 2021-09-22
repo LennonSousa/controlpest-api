@@ -1,6 +1,10 @@
 import ServiceOrder from '../models/ServiceOrdersModel';
 import customerView from './customerView';
 import userView from './userView';
+import itemView from './serviceItemView';
+import serviceBuildTypeView from './serviceBuildTypeView';
+import servicePragueTypeView from './servicePragueTypeView';
+import serviceTreatmentTypeView from './serviceTreatmentTypeView';
 
 export default {
     render(serviceOrder: ServiceOrder) {
@@ -23,6 +27,10 @@ export default {
             updated_at: serviceOrder.updated_at,
             customer: serviceOrder.customer && customerView.render(serviceOrder.customer),
             user: serviceOrder.user && userView.render(serviceOrder.user),
+            items: serviceOrder.items ? itemView.renderMany(serviceOrder.items) : [],
+            serviceBuildTypes: serviceOrder.serviceBuildTypes ? serviceBuildTypeView.renderMany(serviceOrder.serviceBuildTypes) : [],
+            servicePragueTypes: serviceOrder.servicePragueTypes ? servicePragueTypeView.renderMany(serviceOrder.servicePragueTypes) : [],
+            serviceTreatmentTypes: serviceOrder.serviceTreatmentTypes ? serviceTreatmentTypeView.renderMany(serviceOrder.serviceTreatmentTypes) : [],
         }
     },
 

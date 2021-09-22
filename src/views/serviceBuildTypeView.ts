@@ -3,15 +3,15 @@ import serviceOrderView from './serviceOrderView';
 import buildTypeView from './buildTypeView';
 
 export default {
-    render(estimateItem: ServiceBuildType) {
+    render(serviceBuildType: ServiceBuildType) {
         return {
-            id: estimateItem.id,
-            service: estimateItem.service && serviceOrderView.render(estimateItem.service),
-            build: estimateItem.build && buildTypeView.render(estimateItem.build),
+            id: serviceBuildType.id,
+            service: serviceBuildType.service && serviceOrderView.render(serviceBuildType.service),
+            build: serviceBuildType.build && buildTypeView.render(serviceBuildType.build),
         }
     },
 
-    renderMany(estimateItems: ServiceBuildType[]) {
-        return estimateItems.map(estimateItem => this.render(estimateItem));
+    renderMany(serviceBuildTypes: ServiceBuildType[]) {
+        return serviceBuildTypes.map(serviceBuildType => this.render(serviceBuildType));
     }
 }

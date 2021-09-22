@@ -291,7 +291,6 @@ export default {
             finish_at: Yup.date().notRequired(),
             notes: Yup.string().notRequired().nullable(),
             customer: Yup.string().required(),
-            user: Yup.string().required(),
             status: Yup.string().required(),
         });
 

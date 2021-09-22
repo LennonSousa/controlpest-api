@@ -45,6 +45,14 @@ export default {
                 where: { customer: Like(`%${customer}%`) },
                 relations: [
                     'customer',
+                    'user',
+                    'items',
+                    'serviceBuildTypes',
+                    'serviceBuildTypes.build',
+                    'servicePragueTypes',
+                    'servicePragueTypes.prague',
+                    'serviceTreatmentTypes',
+                    'serviceTreatmentTypes.treatment',
                 ],
                 order: {
                     created_at: "DESC"
@@ -138,6 +146,9 @@ export default {
             customer,
             user,
             items,
+            buildTypes,
+            pragueTypes,
+            treatmentTypes,
         } = request.body;
 
         const serviceOrdersRepository = getCustomRepository(ServiceOrdersRepository);
@@ -164,6 +175,9 @@ export default {
             customer,
             user,
             items,
+            buildTypes,
+            pragueTypes,
+            treatmentTypes,
         };
 
         const schema = Yup.object().shape({
@@ -189,6 +203,21 @@ export default {
                     details: Yup.number().notRequired(),
                     amount: Yup.number().required(),
                     order: Yup.number().required(),
+                })
+            ),
+            buildTypes: Yup.array(
+                Yup.object().shape({
+                    build: Yup.string().required(),
+                })
+            ),
+            pragueTypes: Yup.array(
+                Yup.object().shape({
+                    prague: Yup.string().required(),
+                })
+            ),
+            treatmentTypes: Yup.array(
+                Yup.object().shape({
+                    treatment: Yup.string().required(),
                 })
             ),
         });
