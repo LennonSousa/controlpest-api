@@ -35,13 +35,16 @@ export default class EstimatesModel {
     state: string;
 
     @Column()
+    discount_percent: boolean;
+
+    @Column()
     discount: number;
 
     @Column()
-    increase: number;
+    increase_percent: boolean;
 
     @Column()
-    percent: boolean;
+    increase: number;
 
     @Column()
     payment: string;

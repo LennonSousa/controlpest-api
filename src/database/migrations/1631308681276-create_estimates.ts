@@ -49,6 +49,11 @@ export class createEstimates1631308681276 implements MigrationInterface {
                         type: 'varchar'
                     },
                     {
+                        name: 'discount_percent',
+                        type: 'boolean',
+                        default: true,
+                    },
+                    {
                         name: 'discount',
                         type: 'decimal',
                         scale: 2,
@@ -56,16 +61,16 @@ export class createEstimates1631308681276 implements MigrationInterface {
                         default: 0.00,
                     },
                     {
+                        name: 'increase_percent',
+                        type: 'boolean',
+                        default: true,
+                    },
+                    {
                         name: 'increase',
                         type: 'decimal',
                         scale: 2,
                         precision: 10,
                         default: 0.00,
-                    },
-                    {
-                        name: 'percent',
-                        type: 'boolean',
-                        default: true,
                     },
                     {
                         name: 'payment',
