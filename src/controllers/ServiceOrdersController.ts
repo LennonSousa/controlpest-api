@@ -130,6 +130,14 @@ export default {
             return response.status(403).send({ error: 'User permission not granted!' });
 
         const {
+            same_address,
+            zip_code,
+            street,
+            number,
+            neighborhood,
+            complement,
+            city,
+            state,
             other_prague_type,
             other_treatment_type,
             other_build_type,
@@ -158,6 +166,14 @@ export default {
         const userCreator = await userRepository.findOneOrFail(user_id);
 
         const data = {
+            same_address,
+            zip_code,
+            street,
+            number,
+            neighborhood,
+            complement,
+            city,
+            state,
             other_prague_type,
             other_treatment_type,
             other_build_type,
@@ -181,6 +197,14 @@ export default {
         };
 
         const schema = Yup.object().shape({
+            same_address: Yup.boolean().notRequired(),
+            zip_code: Yup.string().required(),
+            street: Yup.string().required(),
+            number: Yup.string().required(),
+            neighborhood: Yup.string().required(),
+            complement: Yup.string().notRequired().nullable(),
+            city: Yup.string().required(),
+            state: Yup.string().required(),
             other_prague_type: Yup.string().notRequired().nullable(),
             other_treatment_type: Yup.string().notRequired().nullable(),
             other_build_type: Yup.string().notRequired().nullable(),
@@ -240,6 +264,14 @@ export default {
             return response.status(403).send({ error: 'User permission not granted!' });
 
         const {
+            same_address,
+            zip_code,
+            street,
+            number,
+            neighborhood,
+            complement,
+            city,
+            state,
             other_prague_type,
             other_treatment_type,
             other_build_type,
@@ -264,6 +296,14 @@ export default {
         const userCreator = await userRepository.findOneOrFail(user_id);
 
         const data = {
+            same_address,
+            zip_code,
+            street,
+            number,
+            neighborhood,
+            complement,
+            city,
+            state,
             other_prague_type,
             other_treatment_type,
             other_build_type,
@@ -284,6 +324,14 @@ export default {
         };
 
         const schema = Yup.object().shape({
+            same_address: Yup.boolean().notRequired(),
+            zip_code: Yup.string().required(),
+            street: Yup.string().required(),
+            number: Yup.string().required(),
+            neighborhood: Yup.string().required(),
+            complement: Yup.string().notRequired().nullable(),
+            city: Yup.string().required(),
+            state: Yup.string().required(),
             other_prague_type: Yup.string().notRequired().nullable(),
             other_treatment_type: Yup.string().notRequired().nullable(),
             other_build_type: Yup.string().notRequired().nullable(),

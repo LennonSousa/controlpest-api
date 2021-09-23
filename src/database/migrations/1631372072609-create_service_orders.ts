@@ -15,6 +15,40 @@ export class createServiceOrders1631372072609 implements MigrationInterface {
                         generationStrategy: 'uuid',
                     },
                     {
+                        name: 'same_address',
+                        type: 'boolean',
+                        default: true,
+                    },
+                    {
+                        name: 'zip_code',
+                        type: 'varchar',
+                    },
+                    {
+                        name: 'street',
+                        type: 'varchar'
+                    },
+                    {
+                        name: 'number',
+                        type: 'varchar'
+                    },
+                    {
+                        name: 'neighborhood',
+                        type: 'varchar'
+                    },
+                    {
+                        name: 'complement',
+                        type: 'varchar',
+                        isNullable: true
+                    },
+                    {
+                        name: 'city',
+                        type: 'varchar'
+                    },
+                    {
+                        name: 'state',
+                        type: 'varchar'
+                    },
+                    {
                         name: 'other_prague_type',
                         type: 'varchar',
                         isNullable: true,

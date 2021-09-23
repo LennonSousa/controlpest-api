@@ -10,6 +10,14 @@ export default {
     render(serviceOrder: ServiceOrder) {
         return {
             id: serviceOrder.id,
+            same_address: serviceOrder.same_address,
+            zip_code: serviceOrder.zip_code,
+            street: serviceOrder.street,
+            number: serviceOrder.number,
+            neighborhood: serviceOrder.neighborhood,
+            complement: serviceOrder.complement,
+            city: serviceOrder.city,
+            state: serviceOrder.state,
             other_prague_type: serviceOrder.other_prague_type,
             other_treatment_type: serviceOrder.other_treatment_type,
             build_description: serviceOrder.build_description,

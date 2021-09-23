@@ -13,6 +13,30 @@ export default class InventoryActionsModel {
     readonly id: string;
 
     @Column()
+    same_address: boolean;
+
+    @Column()
+    zip_code: string;
+
+    @Column()
+    street: string;
+
+    @Column()
+    number: string;
+
+    @Column()
+    neighborhood: string;
+
+    @Column()
+    complement: string;
+
+    @Column()
+    city: string;
+
+    @Column()
+    state: string;
+
+    @Column()
     other_prague_type: string;
 
     @Column()
