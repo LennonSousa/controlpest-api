@@ -117,6 +117,14 @@ export default {
         const serviceOrder = await serviceOrdersRepository.findOneOrFail(id, {
             relations: [
                 'customer',
+                'user',
+                'items',
+                'builds',
+                'builds.build',
+                'pragues',
+                'pragues.prague',
+                'treatments',
+                'treatments.treatment',
             ]
         });
 
@@ -154,9 +162,9 @@ export default {
             customer,
             user,
             items,
-            buildTypes,
-            pragueTypes,
-            treatmentTypes,
+            builds,
+            pragues,
+            treatments,
         } = request.body;
 
         const serviceOrdersRepository = getCustomRepository(ServiceOrdersRepository);
@@ -188,12 +196,13 @@ export default {
             created_by: userCreator.name,
             start_at,
             finish_at,
+            updated_by: userCreator.name,
             customer,
             user,
             items,
-            buildTypes,
-            pragueTypes,
-            treatmentTypes,
+            builds,
+            pragues,
+            treatments,
         };
 
         const schema = Yup.object().shape({
@@ -207,7 +216,6 @@ export default {
             state: Yup.string().required(),
             other_prague_type: Yup.string().notRequired().nullable(),
             other_treatment_type: Yup.string().notRequired().nullable(),
-            other_build_type: Yup.string().notRequired().nullable(),
             build_description: Yup.string().notRequired().nullable(),
             animals: Yup.boolean().notRequired(),
             old_people: Yup.boolean().notRequired(),
@@ -224,22 +232,22 @@ export default {
             items: Yup.array(
                 Yup.object().shape({
                     name: Yup.string().required(),
-                    details: Yup.number().notRequired(),
+                    details: Yup.string().notRequired(),
                     amount: Yup.number().required(),
                     order: Yup.number().required(),
                 })
             ),
-            buildTypes: Yup.array(
+            builds: Yup.array(
                 Yup.object().shape({
                     build: Yup.string().required(),
                 })
             ),
-            pragueTypes: Yup.array(
+            pragues: Yup.array(
                 Yup.object().shape({
                     prague: Yup.string().required(),
                 })
             ),
-            treatmentTypes: Yup.array(
+            treatments: Yup.array(
                 Yup.object().shape({
                     treatment: Yup.string().required(),
                 })
@@ -286,7 +294,6 @@ export default {
             start_at,
             finish_at,
             customer,
-            user,
         } = request.body;
 
         const serviceOrdersRepository = getCustomRepository(ServiceOrdersRepository);
@@ -320,7 +327,6 @@ export default {
             updated_by: userCreator.name,
             updated_at: new Date(),
             customer,
-            user,
         };
 
         const schema = Yup.object().shape({
@@ -334,7 +340,6 @@ export default {
             state: Yup.string().required(),
             other_prague_type: Yup.string().notRequired().nullable(),
             other_treatment_type: Yup.string().notRequired().nullable(),
-            other_build_type: Yup.string().notRequired().nullable(),
             build_description: Yup.string().notRequired().nullable(),
             animals: Yup.boolean().notRequired(),
             old_people: Yup.boolean().notRequired(),
@@ -346,7 +351,6 @@ export default {
             start_at: Yup.date().required(),
             finish_at: Yup.date().required(),
             customer: Yup.string().required(),
-            user: Yup.string().required(),
             items: Yup.array(
                 Yup.object().shape({
                     name: Yup.string().required(),

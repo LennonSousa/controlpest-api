@@ -36,7 +36,7 @@ userAuthRoutes.put('/users/reset/:id', usersAuthMiddleware, UsersResetsControlle
 
 userAuthRoutes.get('/users', usersAuthMiddleware, UsersController.index);
 userAuthRoutes.get('/users/:id', usersAuthMiddleware, UsersController.show);
-userAuthRoutes.post('/users', usersAuthMiddleware, UsersController.create);
+userAuthRoutes.post('/users', UsersController.create);
 userAuthRoutes.put('/users/:id', usersAuthMiddleware, UsersController.update);
 userAuthRoutes.delete('/users/:id', usersAuthMiddleware, UsersController.delete);
 
@@ -110,29 +110,29 @@ userAuthRoutes.delete('/products/:id', usersAuthMiddleware, ProductsController.d
 userAuthRoutes.get('/store', usersAuthMiddleware, StoreController.show);
 userAuthRoutes.put('/store/:id', usersAuthMiddleware, StoreController.update);
 
-userAuthRoutes.get('/services/build-types', usersAuthMiddleware, ServiceBuildTypesController.index);
-userAuthRoutes.get('/services/build-types/:id', usersAuthMiddleware, ServiceBuildTypesController.show);
-userAuthRoutes.post('/services/build-types', usersAuthMiddleware, ServiceBuildTypesController.create);
-userAuthRoutes.put('/services/build-types/:id', usersAuthMiddleware, ServiceBuildTypesController.update);
-userAuthRoutes.delete('/services/build-types/:id', usersAuthMiddleware, ServiceBuildTypesController.delete);
+userAuthRoutes.get('/services/builds-types', usersAuthMiddleware, ServiceBuildTypesController.index);
+userAuthRoutes.get('/services/builds-types/:id', usersAuthMiddleware, ServiceBuildTypesController.show);
+userAuthRoutes.post('/services/builds-types', usersAuthMiddleware, ServiceBuildTypesController.create);
+userAuthRoutes.put('/services/builds-types/:id', usersAuthMiddleware, ServiceBuildTypesController.update);
+userAuthRoutes.delete('/services/builds-types/:id', usersAuthMiddleware, ServiceBuildTypesController.delete);
 
-userAuthRoutes.get('/services/prague-types', usersAuthMiddleware, ServicePragueTypesController.index);
-userAuthRoutes.get('/services/prague-types/:id', usersAuthMiddleware, ServicePragueTypesController.show);
-userAuthRoutes.post('/services/prague-types', usersAuthMiddleware, ServicePragueTypesController.create);
-userAuthRoutes.put('/services/prague-types/:id', usersAuthMiddleware, ServicePragueTypesController.update);
-userAuthRoutes.delete('/services/prague-types/:id', usersAuthMiddleware, ServicePragueTypesController.delete);
+userAuthRoutes.get('/services/pragues-types', usersAuthMiddleware, ServicePragueTypesController.index);
+userAuthRoutes.get('/services/pragues-types/:id', usersAuthMiddleware, ServicePragueTypesController.show);
+userAuthRoutes.post('/services/pragues-types', usersAuthMiddleware, ServicePragueTypesController.create);
+userAuthRoutes.put('/services/pragues-types/:id', usersAuthMiddleware, ServicePragueTypesController.update);
+userAuthRoutes.delete('/services/pragues-types/:id', usersAuthMiddleware, ServicePragueTypesController.delete);
 
-userAuthRoutes.get('/services/treatment-types', usersAuthMiddleware, ServiceTreatmentTypesController.index);
-userAuthRoutes.get('/services/treatment-types/:id', usersAuthMiddleware, ServiceTreatmentTypesController.show);
-userAuthRoutes.post('/services/treatment-types', usersAuthMiddleware, ServiceTreatmentTypesController.create);
-userAuthRoutes.put('/services/treatment-types/:id', usersAuthMiddleware, ServiceTreatmentTypesController.update);
-userAuthRoutes.delete('/services/treatment-types/:id', usersAuthMiddleware, ServiceTreatmentTypesController.delete);
+userAuthRoutes.get('/services/treatments-types', usersAuthMiddleware, ServiceTreatmentTypesController.index);
+userAuthRoutes.get('/services/treatments-types/:id', usersAuthMiddleware, ServiceTreatmentTypesController.show);
+userAuthRoutes.post('/services/treatments-types', usersAuthMiddleware, ServiceTreatmentTypesController.create);
+userAuthRoutes.put('/services/treatments-types/:id', usersAuthMiddleware, ServiceTreatmentTypesController.update);
+userAuthRoutes.delete('/services/treatments-types/:id', usersAuthMiddleware, ServiceTreatmentTypesController.delete);
 
-userAuthRoutes.get('/services/items', usersAuthMiddleware, ServiceItemsController.index);
-userAuthRoutes.get('/services/items/:id', usersAuthMiddleware, ServiceItemsController.show);
-userAuthRoutes.post('/services/items', usersAuthMiddleware, ServiceItemsController.create);
-userAuthRoutes.put('/services/items/:id', usersAuthMiddleware, ServiceItemsController.update);
-userAuthRoutes.delete('/services/items/:id', usersAuthMiddleware, ServiceItemsController.delete);
+userAuthRoutes.get('/services/orders/items', usersAuthMiddleware, ServiceItemsController.index);
+userAuthRoutes.get('/services/orders/items/:id', usersAuthMiddleware, ServiceItemsController.show);
+userAuthRoutes.post('/services/orders/items', usersAuthMiddleware, ServiceItemsController.create);
+userAuthRoutes.put('/services/orders/items/:id', usersAuthMiddleware, ServiceItemsController.update);
+userAuthRoutes.delete('/services/orders/items/:id', usersAuthMiddleware, ServiceItemsController.delete);
 
 userAuthRoutes.get('/services/orders', usersAuthMiddleware, ServiceOrdersController.index);
 userAuthRoutes.get('/services/orders/:id', usersAuthMiddleware, ServiceOrdersController.show);

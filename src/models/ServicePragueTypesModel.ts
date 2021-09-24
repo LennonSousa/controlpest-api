@@ -8,7 +8,7 @@ export default class ServicePragueTypesModel {
     @PrimaryGeneratedColumn('uuid')
     readonly id: string;
 
-    @ManyToOne(() => ServiceOrder, service => service.servicePragueTypes)
+    @ManyToOne(() => ServiceOrder, service => service.pragues)
     @JoinColumn({ name: 'service_order_id' })
     service: ServiceOrder;
 

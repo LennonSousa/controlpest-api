@@ -8,7 +8,7 @@ import ServiceBuildType from './ServiceBuildTypesModel';
 import ServiceItem from './ServiceItemsModel';
 
 @Entity('service_orders')
-export default class InventoryActionsModel {
+export default class ServiceOrdersModel {
     @PrimaryGeneratedColumn('uuid')
     readonly id: string;
 
@@ -102,17 +102,17 @@ export default class InventoryActionsModel {
         cascade: ['insert', 'update']
     })
     @JoinColumn({ name: 'service_order_id' })
-    serviceBuildTypes: ServiceBuildType[];
+    builds: ServiceBuildType[];
 
     @OneToMany(() => ServicePragueType, servicePragueType => servicePragueType.service, {
         cascade: ['insert', 'update']
     })
     @JoinColumn({ name: 'service_order_id' })
-    servicePragueTypes: ServicePragueType[];
+    pragues: ServicePragueType[];
 
     @OneToMany(() => ServiceTreatmentType, serviceTreatmentType => serviceTreatmentType.service, {
         cascade: ['insert', 'update']
     })
     @JoinColumn({ name: 'service_order_id' })
-    serviceTreatmentTypes: ServiceTreatmentType[];
+    treatments: ServiceTreatmentType[];
 }

@@ -8,7 +8,7 @@ export default class ServiceBuildTypesModel {
     @PrimaryGeneratedColumn('uuid')
     readonly id: string;
 
-    @ManyToOne(() => ServiceOrder, service => service.serviceBuildTypes)
+    @ManyToOne(() => ServiceOrder, service => service.builds)
     @JoinColumn({ name: 'service_order_id' })
     service: ServiceOrder;
 

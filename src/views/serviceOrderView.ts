@@ -31,14 +31,15 @@ export default {
             created_at: serviceOrder.created_at,
             created_by: serviceOrder.created_by,
             start_at: serviceOrder.start_at,
+            finish_at: serviceOrder.finish_at,
             updated_by: serviceOrder.updated_by,
             updated_at: serviceOrder.updated_at,
             customer: serviceOrder.customer && customerView.render(serviceOrder.customer),
             user: serviceOrder.user && userView.render(serviceOrder.user),
             items: serviceOrder.items ? itemView.renderMany(serviceOrder.items) : [],
-            serviceBuildTypes: serviceOrder.serviceBuildTypes ? serviceBuildTypeView.renderMany(serviceOrder.serviceBuildTypes) : [],
-            servicePragueTypes: serviceOrder.servicePragueTypes ? servicePragueTypeView.renderMany(serviceOrder.servicePragueTypes) : [],
-            serviceTreatmentTypes: serviceOrder.serviceTreatmentTypes ? serviceTreatmentTypeView.renderMany(serviceOrder.serviceTreatmentTypes) : [],
+            builds: serviceOrder.builds ? serviceBuildTypeView.renderMany(serviceOrder.builds) : [],
+            pragues: serviceOrder.pragues ? servicePragueTypeView.renderMany(serviceOrder.pragues) : [],
+            treatments: serviceOrder.treatments ? serviceTreatmentTypeView.renderMany(serviceOrder.treatments) : [],
         }
     },
 
