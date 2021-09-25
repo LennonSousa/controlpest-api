@@ -1,7 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import Product from './ProductsModel';
-import User from './UsersModel';
 
 @Entity('inventory_actions')
 export default class InventoryActionsModel {
@@ -21,7 +20,7 @@ export default class InventoryActionsModel {
     amount: number;
 
     @Column()
-    inventory_amount: boolean;
+    inventory_amount: number;
 
     @Column()
     created_at: Date;

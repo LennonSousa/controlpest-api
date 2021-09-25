@@ -62,6 +62,11 @@ export default {
         const customer = await customersRepository.findOneOrFail(id, {
             relations: [
                 'type',
+                'estimates',
+                'estimates.customer',
+                'estimates.status',
+                'serviceOrders',
+                'serviceOrders.customer'
             ]
         });
 

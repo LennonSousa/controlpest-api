@@ -125,9 +125,9 @@ export default {
             description: Yup.string().notRequired(),
             transaction_id: Yup.string().notRequired(),
             price: Yup.number().notRequired(),
-            amount: Yup.number().required(),
-            inventory_amount: Yup.number().required(),
-            product: Yup.string().required(),
+            amount: Yup.number().notRequired(),
+            inventory_amount: Yup.number().notRequired(),
+            product: Yup.string().notRequired(),
         });
 
         await schema.validate(data, {

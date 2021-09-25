@@ -88,6 +88,7 @@ export default {
         const product = await productsRepository.findOneOrFail(id, {
             relations: [
                 'category',
+                'inventory_actions'
             ]
         });
 

@@ -45,14 +45,6 @@ export default {
                 where: { customer: Like(`%${customer}%`) },
                 relations: [
                     'customer',
-                    'user',
-                    'items',
-                    'serviceBuildTypes',
-                    'serviceBuildTypes.build',
-                    'servicePragueTypes',
-                    'servicePragueTypes.prague',
-                    'serviceTreatmentTypes',
-                    'serviceTreatmentTypes.treatment',
                 ],
                 order: {
                     created_at: "DESC"
@@ -72,7 +64,7 @@ export default {
             serviceOrders = await serviceOrdersRepository.find({
                 where: { user: Like(`%${user}%`) },
                 relations: [
-                    'status',
+                    'customer',
                 ],
                 order: {
                     created_at: "DESC"

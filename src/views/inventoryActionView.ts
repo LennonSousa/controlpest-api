@@ -18,6 +18,8 @@ export default {
     },
 
     renderMany(inventoryActions: InventoryAction[]) {
-        return inventoryActions.map(inventoryAction => this.render(inventoryAction));
+        const inventoryActionsSorted = inventoryActions.sort((a, b) => b.created_at.getTime() - a.created_at.getTime());
+
+        return inventoryActionsSorted.map(inventoryAction => this.render(inventoryAction));
     }
 }

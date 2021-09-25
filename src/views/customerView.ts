@@ -26,7 +26,7 @@ export default {
             created_by: customer.created_by,
             created_at: customer.created_at,
             type: customer.type && customerTypeView.render(customer.type),
-            docs: customer.estimates ? estimateView.renderMany(customer.estimates) : [],
+            estimates: customer.estimates ? estimateView.renderMany(customer.estimates) : [],
             serviceOrders: customer.serviceOrders ? serviceOrderView.renderMany(customer.serviceOrders) : [],
         }
     },
