@@ -11,7 +11,7 @@ import EstimatesModel from '../models/EstimatesModel';
 export default {
     async index(request: Request, response: Response) {
         const { user_id } = request.params;
-        const { start, end, limit = 10, page = 1, name, customer } = request.query;
+        const { start, end, limit = 10, page = 1, customer } = request.query;
 
         if (! await UsersRolesController.can(user_id, "estimates", "view"))
             return response.status(403).send({ error: 'User permission not granted!' });
@@ -23,27 +23,6 @@ export default {
         if (start && end) {
             estimates = await estimatesRepository.find({
                 where: { created_at: Between(start, end) },
-                relations: [
-                    'customer',
-                    'status',
-                ],
-                order: {
-                    created_at: "DESC"
-                },
-                take: Number(limit),
-                skip: ((Number(page) - 1) * Number(limit)),
-            });
-
-            const totalPages = Math.ceil(estimates.length / Number(limit));
-
-            response.header('X-Total-Pages', String(totalPages));
-
-            return response.json(estimateView.renderMany(estimates));
-        }
-
-        if (name) {
-            estimates = await estimatesRepository.find({
-                where: { name: Like(`%${name}%`) },
                 relations: [
                     'customer',
                     'status',
