@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { getCustomRepository, Like } from 'typeorm';
 import * as Yup from 'yup';
+import { format, parseISO } from 'date-fns';
 
 import customerView from '../views/customerView';
 import { CustomersRepository } from '../repositories/CustomersRepository';
@@ -105,6 +106,10 @@ export default {
 
         const user = await userRepository.findOneOrFail(user_id);
 
+        const birthDateIso = parseISO(birth);
+
+        const birthDate = format(new Date(birthDateIso), 'yyyy-MM-dd');
+
         const data = {
             name,
             document,
@@ -121,7 +126,7 @@ export default {
             state,
             owner,
             notes,
-            birth,
+            birth: new Date(`${birthDate} 12:00:00`),
             created_by: user.name,
             type,
         };
@@ -186,6 +191,10 @@ export default {
 
         const customersRepository = getCustomRepository(CustomersRepository);
 
+        const birthDateIso = parseISO(birth);
+
+        const birthDate = format(new Date(birthDateIso), 'yyyy-MM-dd');
+
         const data = {
             name,
             document,
@@ -202,7 +211,7 @@ export default {
             state,
             owner,
             notes,
-            birth,
+            birth: new Date(`${birthDate} 12:00:00`),
             type,
         };
 

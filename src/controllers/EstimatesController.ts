@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { Between, getCustomRepository, Like } from 'typeorm';
 import * as Yup from 'yup';
+import { format, parseISO } from 'date-fns';
 
 import estimateView from '../views/estimateView';
 import { EstimatesRepository } from '../repositories/EstimatesRepository';
@@ -136,6 +137,14 @@ export default {
 
         const userCreator = await userRepository.findOneOrFail(user_id);
 
+        const expireAtDateIso = parseISO(expire_at);
+
+        const expireAtDate = format(new Date(expireAtDateIso), 'yyyy-MM-dd');
+
+        const finishAtDateIso = parseISO(finish_at);
+
+        const finishAtDate = format(new Date(finishAtDateIso), 'yyyy-MM-dd');
+
         const data = {
             same_address,
             zip_code,
@@ -151,8 +160,8 @@ export default {
             increase,
             payment,
             created_by: userCreator.name,
-            expire_at,
-            finish_at,
+            expire_at: new Date(`${expireAtDate} 12:00:00`),
+            finish_at: new Date(`${finishAtDate} 12:00:00`),
             notes,
             customer,
             user,
@@ -233,6 +242,14 @@ export default {
 
         const estimatesRepository = getCustomRepository(EstimatesRepository);
 
+        const expireAtDateIso = parseISO(expire_at);
+
+        const expireAtDate = format(new Date(expireAtDateIso), 'yyyy-MM-dd');
+
+        const finishAtDateIso = parseISO(finish_at);
+
+        const finishAtDate = format(new Date(finishAtDateIso), 'yyyy-MM-dd');
+
         const data = {
             same_address,
             zip_code,
@@ -247,8 +264,8 @@ export default {
             increase_percent,
             increase,
             payment,
-            expire_at,
-            finish_at,
+            expire_at: new Date(`${expireAtDate} 12:00:00`),
+            finish_at: new Date(`${finishAtDate} 12:00:00`),
             notes,
             customer,
             user,

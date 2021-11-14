@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { Between, getCustomRepository, Like } from 'typeorm';
 import * as Yup from 'yup';
+import { format, parseISO } from 'date-fns';
 
 import serviceOrderView from '../views/serviceOrderView';
 import { ServiceOrdersRepository } from '../repositories/ServiceOrdersRepository';
@@ -165,6 +166,14 @@ export default {
 
         const userCreator = await userRepository.findOneOrFail(user_id);
 
+        const startAtDateIso = parseISO(start_at);
+
+        const startAtDate = format(new Date(startAtDateIso), 'yyyy-MM-dd');
+
+        const finishAtDateIso = parseISO(finish_at);
+
+        const finishAtDate = format(new Date(finishAtDateIso), 'yyyy-MM-dd');
+
         const data = {
             same_address,
             zip_code,
@@ -186,8 +195,8 @@ export default {
             warranty,
             notes,
             created_by: userCreator.name,
-            start_at,
-            finish_at,
+            start_at: new Date(`${startAtDate} 12:00:00`),
+            finish_at: new Date(`${finishAtDate} 12:00:00`),
             updated_by: userCreator.name,
             customer,
             user,
